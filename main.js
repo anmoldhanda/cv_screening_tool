@@ -95,11 +95,11 @@ function shownextprofile() {
           />
           </div>
           <div class="contentbox">
-          <h3 class="candidatename">${current_candidate.name}</h3>
-          <p class="age">${current_candidate.age}</p>
-          <p class="skill-in">${current_candidate.language}</p>
-          <p class="speciality">${current_candidate.framework}</p>
-          <p class="location">${current_candidate.location}</p>
+          <h3 class="candidatename">Name: ${current_candidate.name}</h3>
+          <p class="age">Age: ${current_candidate.age}</p>
+          <p class="skill-in">Language: ${current_candidate.language}</p>
+          <p class="speciality">Technology working in: ${current_candidate.framework}</p>
+          <p class="location">Lives in: ${current_candidate.location}</p>
           </div>
           </div>`;
   } else {

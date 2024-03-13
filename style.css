@@ -91,7 +91,7 @@ body {
 }
 
 .contentbox .candidatename {
-  font-weight: 600;
+  font-weight: normal;
 }
 /* ========================================== overlay notifications ========================================== */
 .overlay-notification-container {
