@@ -3,26 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>cv screening tool</title>
-    <!-- =============================== custom css file =============================== -->
+    <title>cv screener tools</title>
+    <!-- ===================================== custom css file ===================================== -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="maincontent">
-      <h2 class="headline">browse through CV profiles</h2>
-      <p>choose the best candidate for your job role using cv screening tool</p>
-    </div>
-    <div class="overlay-container">
-      <div class="overlay-conents-container">
-        <p class="overlay-text">loop over back</p>
-        <button id="closepopupbtn">start again</button>
+    <div class="overlay-notification-container">
+      <div class="overlay-notification-box">
+        <p class="notification-text">loop over back</p>
+        <button class="closepopup-btn">ok</button>
       </div>
     </div>
-    <div class="cv-screen-outer">
-      <div class="cv-screen-container"></div>
-      <button id="nextcv-btn">next cv</button>
+    <div class="cv-screener-container">
+      <div class="project-title-box">
+        <h2 class="headline">browse through cv profiles</h2>
+        <p>
+          choose the best candiate for your job role using cv screening tool
+        </p>
+      </div>
+      <div class="cv-screener-cards-container"></div>
+      <button id="nextprofilebtn">next profile</button>
     </div>
-    <!-- =============================== custom js file =============================== -->
+    <!-- ===================================== custom js file ===================================== -->
     <script src="main.js"></script>
   </body>
 </html>

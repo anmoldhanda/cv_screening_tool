@@ -50,48 +50,64 @@ const candidates_data = [
   },
 ];
 
-// ======== iterate over each canidate details object until the object isn't finished increment it otherwise close this ========
-const nextcvbtn = document.getElementById("nextcv-btn");
-const cvscreencontainer = document.querySelector(".cv-screen-container");
-const closepopupbtn = document.getElementById("closepopupbtn");
-const overlay_container = document.querySelector(".overlay-container");
+const nextprofilebtn = document.getElementById("nextprofilebtn");
+const cv_screener_cards_container = document.querySelector(
+  ".cv-screener-cards-container"
+);
+const close_popup_btn = document.querySelector(".closepopup-btn");
+const overlay_notification_container = document.querySelector(
+  ".overlay-notification-container"
+);
 
-function cv_iterator(remaining_candidates) {
-  let currentindex = 0;
+function candidates_iterator(canidates_details_data) {
+  let nextindex = 0;
   return {
-    next: function () {
-      return currentindex < remaining_candidates.length
-        ? { value: remaining_candidates[currentindex++], done: false }
-        : { done: true };
+    next: () => {
+      if (nextindex < canidates_details_data.length) {
+        return {
+          value: canidates_details_data[nextindex++],
+          done: false,
+          // ======================== data is not over which means has more to show and iterate the data ========================
+        };
+      } else {
+        return {
+          done: true,
+          // ======================== data is over which means it has nor more data to show and iterate ========================
+        };
+      }
     },
   };
 }
 
-const candidates = cv_iterator(candidates_data);
-nextcandidate();
-nextcvbtn.addEventListener("click", nextcandidate);
-
-function nextcandidate() {
-  const current_candidate = candidates.next().value;
+const all_candidates = candidates_iterator(candidates_data);
+console.log(all_candidates);
+shownextprofile();
+nextprofilebtn.addEventListener("click", shownextprofile);
+function shownextprofile() {
+  const current_candidate = all_candidates.next().value;
   if (current_candidate != undefined) {
-    cvscreencontainer.innerHTML = `<div class="cv-screen-card">
-        <div class="photobox">
-        <img src="${current_candidate.photo}" alt="user profile pic" />
-        </div>
-        <div class="contentbox">
-        <h3 class="candidate-name">name: ${current_candidate.name}</h3>
-        <p class="candidateage-age">age: ${current_candidate.age}</p>
-        <p class="candidate-language-skill">working in: ${current_candidate.language}</p>
-        <p class="candidate-framework-skill">speciality in: ${current_candidate.framework}</p>
-        <p class="candidate-location">lives in: ${current_candidate.location}</p>
-        </div>
-        </div>`;
+    cv_screener_cards_container.innerHTML = `<div class="cv-screener-card">
+          <div class="photobox">
+          <img
+          src="${current_candidate.photo}"
+          alt="candidate pic"
+          class="candidatepic"
+          />
+          </div>
+          <div class="contentbox">
+          <h3 class="candidatename">${current_candidate.name}</h3>
+          <p class="age">${current_candidate.age}</p>
+          <p class="skill-in">${current_candidate.language}</p>
+          <p class="speciality">${current_candidate.framework}</p>
+          <p class="location">${current_candidate.location}</p>
+          </div>
+          </div>`;
   } else {
-    overlay_container.style.display = "block";
+    overlay_notification_container.style.display = "block";
   }
 }
 
-closepopupbtn.addEventListener("click", () => {
-  overlay_container.style.display = "none";
+close_popup_btn.addEventListener("click", () => {
+  overlay_notification_container.style.display = "none";
   window.location.reload();
 });
